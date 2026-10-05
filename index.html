@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>SYLORA | Fashion & Accessories</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+      <div class="logo">SYLORA</div>
+
+      <nav class="navbar">
+        <a href="index.html" class="active">Home</a>
+        <a href="#shop">Shop</a>
+        <a href="#categories">Categories</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="ai.html">AI Assistant</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-btn" onclick="openSearch()">🔍</button>
+
+        <a href="login.html" class="icon-btn"> 👤 </a>
+
+        <a href="cart.html" class="cart-btn">
+          🛒 <span id="cart-count">0</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- ================= SEARCH BOX ================= -->
+
+    <div class="search-box" id="searchBox">
+      <input type="text" id="searchInput" placeholder="Search products..." />
+
+      <button onclick="closeSearch()">✕</button>
+    </div>
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+      <div class="hero-content">
+        <p class="small-heading">NEW SEASON COLLECTION</p>
+
+        <h1>
+          Style That<br />
+          <span>Defines You.</span>
+        </h1>
+
+        <p>
+          Discover modern fashion, elegant accessories and timeless pieces
+          designed for your everyday style.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#shop" class="primary-btn"> Shop Collection </a>
+
+          <a href="#categories" class="secondary-btn"> Explore Categories </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CATEGORIES ================= -->
+
+    <section class="categories-section" id="categories">
+      <div class="section-heading">
+        <p>EXPLORE</p>
+
+        <h2>Shop By Category</h2>
+      </div>
+
+      <div class="categories">
+        <div class="category-card">
+          <div class="category-icon">👕</div>
+
+          <h3>Clothing</h3>
+
+          <p>Modern everyday fashion</p>
+
+          <a href="#shop"> Explore → </a>
+        </div>
+
+        <div class="category-card">
+          <div class="category-icon">👜</div>
+
+          <h3>Accessories</h3>
+
+          <p>Complete your look</p>
+
+          <a href="#shop"> Explore → </a>
+        </div>
+
+        <div class="category-card">
+          <div class="category-icon">⌚</div>
+
+          <h3>Watches</h3>
+
+          <p>Timeless elegance</p>
+
+          <a href="#shop"> Explore → </a>
+        </div>
+
+        <div class="category-card">
+          <div class="category-icon">🧥</div>
+
+          <h3>Hoodies</h3>
+
+          <p>Comfort meets style</p>
+
+          <a href="#shop"> Explore → </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PRODUCTS ================= -->
+
+    <section class="products-section" id="shop">
+      <div class="section-heading">
+        <p>SYLORA COLLECTION</p>
+
+        <h2>Featured Products</h2>
+
+        <span> Carefully selected pieces for your wardrobe. </span>
+      </div>
+
+      <div class="products-grid">
+        <!-- PRODUCT 1 -->
+
+        <div class="product-card">
+          <div class="product-image">
+            👕
+            <span class="sale-badge"> NEW </span>
+          </div>
+
+          <div class="product-info">
+            <p class="product-category">CLOTHING</p>
+
+            <h3>Essential White Shirt</h3>
+
+            <div class="rating">★★★★★</div>
+
+            <div class="product-bottom">
+              <strong> $29.00 </strong>
+
+              <button onclick="addToCart('Essential White Shirt', 29)">
+                Add +
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- PRODUCT 2 -->
+
+        <div class="product-card">
+          <div class="product-image">
+            🧥
+            <span class="sale-badge"> POPULAR </span>
+          </div>
+
+          <div class="product-info">
+            <p class="product-category">HOODIES</p>
+
+            <h3>Classic Black Hoodie</h3>
+
+            <div class="rating">★★★★★</div>
+
+            <div class="product-bottom">
+              <strong> $35.00 </strong>
+
+              <button onclick="addToCart('Classic Black Hoodie', 35)">
+                Add +
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- PRODUCT 3 -->
+
+        <div class="product-card">
+          <div class="product-image">👖</div>
+
+          <div class="product-info">
+            <p class="product-category">CLOTHING</p>
+
+            <h3>Urban Denim Jacket</h3>
+
+            <div class="rating">★★★★☆</div>
+
+            <div class="product-bottom">
+              <strong> $49.00 </strong>
+
+              <button onclick="addToCart('Urban Denim Jacket', 49)">
+                Add +
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- PRODUCT 4 -->
+
+        <div class="product-card">
+          <div class="product-image">⌚</div>
+
+          <div class="product-info">
+            <p class="product-category">WATCHES</p>
+
+            <h3>Minimal Wrist Watch</h3>
+
+            <div class="rating">★★★★★</div>
+
+            <div class="product-bottom">
+              <strong> $59.00 </strong>
+
+              <button onclick="addToCart('Minimal Wrist Watch', 59)">
+                Add +
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- PRODUCT 5 -->
+
+        <div class="product-card">
+          <div class="product-image">👜</div>
+
+          <div class="product-info">
+            <p class="product-category">ACCESSORIES</p>
+
+            <h3>Classic Crossbody Bag</h3>
+
+            <div class="rating">★★★★★</div>
+
+            <div class="product-bottom">
+              <strong> $39.00 </strong>
+
+              <button onclick="addToCart('Classic Crossbody Bag', 39)">
+                Add +
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- PRODUCT 6 -->
+
+        <div class="product-card">
+          <div class="product-image">🕶️</div>
+
+          <div class="product-info">
+            <p class="product-category">ACCESSORIES</p>
+
+            <h3>Classic Sunglasses</h3>
+
+            <div class="rating">★★★★☆</div>
+
+            <div class="product-bottom">
+              <strong> $22.00 </strong>
+
+              <button onclick="addToCart('Classic Sunglasses', 22)">
+                Add +
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- PRODUCT 7 -->
+
+        <div class="product-card">
+          <div class="product-image">👚</div>
+
+          <div class="product-info">
+            <p class="product-category">CLOTHING</p>
+
+            <h3>Casual Premium T-Shirt</h3>
+
+            <div class="rating">★★★★★</div>
+
+            <div class="product-bottom">
+              <strong> $19.00 </strong>
+
+              <button onclick="addToCart('Casual Premium T-Shirt', 19)">
+                Add +
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- PRODUCT 8 -->
+
+        <div class="product-card">
+          <div class="product-image">⌚</div>
+
+          <div class="product-info">
+            <p class="product-category">WATCHES</p>
+
+            <h3>Premium Silver Watch</h3>
+
+            <div class="rating">★★★★★</div>
+
+            <div class="product-bottom">
+              <strong> $75.00 </strong>
+
+              <button onclick="addToCart('Premium Silver Watch', 75)">
+                Add +
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= AI BANNER ================= -->
+
+    <section class="ai-banner">
+      <div>
+        <p>SMART SHOPPING</p>
+
+        <h2>Need help finding your style?</h2>
+
+        <span>
+          Ask our AI Shopping Assistant for product recommendations.
+        </span>
+      </div>
+
+      <a href="ai.html" class="primary-btn"> Talk to AI → </a>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+
+    <section class="about-section" id="about">
+      <div class="about-content">
+        <p>ABOUT SYLORA</p>
+
+        <h2>Fashion made simple.</h2>
+
+        <p>
+          SYLORA is a modern fashion and accessories store created to bring
+          timeless style, quality and simplicity together in one place.
+        </p>
+
+        <a href="#" class="text-link"> Discover Our Story → </a>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+
+    <section class="contact-section" id="contact">
+      <div class="section-heading">
+        <p>GET IN TOUCH</p>
+
+        <h2>We'd love to hear from you.</h2>
+      </div>
+
+      <div class="contact-box">
+        <div>
+          📧
+          <strong>Email</strong>
+          <span>hello@sylora.com</span>
+        </div>
+
+        <div>
+          📞
+          <strong>Phone</strong>
+          <span>+92 300 1234567</span>
+        </div>
+
+        <div>
+          📍
+          <strong>Location</strong>
+          <span>Pakistan</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+      <div class="footer-brand">
+        <h2>SYLORA</h2>
+
+        <p>Fashion that defines you.</p>
+      </div>
+
+      <div class="footer-links">
+        <div>
+          <h4>Shop</h4>
+
+          <a href="#shop">Clothing</a>
+          <a href="#shop">Accessories</a>
+          <a href="#shop">Watches</a>
+          <a href="#shop">Hoodies</a>
+        </div>
+
+        <div>
+          <h4>Company</h4>
+
+          <a href="#about">About Us</a>
+          <a href="#contact">Contact</a>
+          <a href="ai.html">AI Assistant</a>
+        </div>
+
+        <div>
+          <h4>Account</h4>
+
+          <a href="login.html">Login</a>
+          <a href="cart.html">Cart</a>
+          <a href="checkout.html">Checkout</a>
+        </div>
+      </div>
+    </footer>
+
+    <div class="copyright">© 2026 SYLORA. All Rights Reserved.</div>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>

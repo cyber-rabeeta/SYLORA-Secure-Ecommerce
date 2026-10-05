@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>SYLORA | My Account</title>
+
+<link rel="stylesheet" href="css/style.css">
+```
+
+</head>
+
+<body>
+
+<header class="header">
+
+```
+<div class="logo">SYLORA</div>
+
+<nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="ai.html">AI Assistant</a>
+</nav>
+
+<div class="header-actions">
+    <a href="cart.html" class="cart-btn">
+        🛒 <span id="cart-count">0</span>
+    </a>
+</div>
+```
+
+</header>
+
+<section class="auth-section">
+
+```
+<div class="form-card auth-card">
+
+    <p class="product-category">WELCOME TO SYLORA</p>
+
+    <h1>My Account</h1>
+
+    <form id="loginForm">
+
+        <input
+            id="email"
+            required
+            type="email"
+            placeholder="Email Address"
+        >
+
+        <input
+            id="password"
+            required
+            type="password"
+            placeholder="Password"
+        >
+
+        <label class="check">
+            <input type="checkbox">
+            Remember me
+        </label>
+
+        <button class="primary-btn" type="submit">
+            Login
+        </button>
+
+    </form>
+
+    <p id="loginMessage" class="muted"></p>
+
+</div>
+```
+
+</section>
+
+<footer class="footer">
+
+```
+<div class="footer-brand">
+    <h2>SYLORA</h2>
+    <p>Fashion that defines you.</p>
+</div>
+```
+
+</footer>
+
+<div class="copyright">
+    © 2026 SYLORA. All Rights Reserved.
+</div>
+
+<script src="js/script.js"></script>
+
+<script>
+
+    updateCartCount();
+
+
+    document.getElementById("loginForm").addEventListener("submit", async function(event) {
+
+        event.preventDefault();
+
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value;
+
+        const message = document.getElementById("loginMessage");
+
+        message.textContent = "Checking login...";
+
+
+        try {
+
+            const response = await fetch("http://127.0.0.1:5000/api/login", {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    email: email,
+                    password: password
+                })
+
+            });
+
+
+            const data = await response.json();
+
+
+            if (response.ok) {
+
+                message.textContent =
+                    "✓ " + data.message + " — Welcome " + data.user.name + "!";
+
+            } else {
+
+                message.textContent =
+                    "✕ " + data.message;
+
+            }
+
+
+        } catch (error) {
+
+            message.textContent =
+                "Unable to connect to SYLORA server.";
+
+            console.error(error);
+
+        }
+
+    });
+
+</script>
+
+</body>
+</html>

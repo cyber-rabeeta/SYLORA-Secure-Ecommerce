@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SYLORA | Shop</title><link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="header"><div class="logo">SYLORA</div><nav class="navbar">
+<a href="index.html">Home</a><a href="shop.html" class="active">Shop</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="ai.html">AI Assistant</a>
+</nav><div class="header-actions"><a href="login.html" class="icon-btn">👤</a><a href="cart.html" class="cart-btn">🛒 <span id="cart-count">0</span></a></div></header>
+
+<section class="page-hero"><p>SYLORA COLLECTION</p><h1>Shop All Products</h1><span>Discover clothing, accessories and watches.</span></section>
+
+<section>
+<div class="filter-row">
+<button class="filter-btn active" onclick="filterProducts('all',this)">All</button>
+<button class="filter-btn" onclick="filterProducts('clothing',this)">Clothing</button>
+<button class="filter-btn" onclick="filterProducts('accessories',this)">Accessories</button>
+<button class="filter-btn" onclick="filterProducts('watches',this)">Watches</button>
+<button class="filter-btn" onclick="filterProducts('hoodies',this)">Hoodies</button>
+</div>
+<div class="products-grid" id="shop-products"></div>
+</section>
+<footer class="footer"><div class="footer-brand"><h2>SYLORA</h2><p>Fashion that defines you.</p></div><div class="footer-links"><div><h4>Shop</h4><a href="shop.html">All Products</a><a href="cart.html">Cart</a></div><div><h4>Company</h4><a href="about.html">About Us</a><a href="contact.html">Contact</a></div><div><h4>Support</h4><a href="ai.html">AI Assistant</a><a href="login.html">My Account</a></div></div></footer>
+<div class="copyright">© 2026 SYLORA. All Rights Reserved.</div>
+<script src="js/script.js"></script>
+<script>renderProducts(); updateCartCount();</script>
+</body></html>

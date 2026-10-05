@@ -1,0 +1,5 @@
+Flask
+flask-cors
+cryptography
+argon2-cffi
+python-dotenv

@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>SYLORA | Checkout</title><link rel="stylesheet" href="css/style.css"></head>
+<body>
+<header class="header"><div class="logo">SYLORA</div><nav class="navbar"><a href="index.html">Home</a><a href="shop.html">Shop</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="ai.html">AI Assistant</a></nav><div class="header-actions"><a href="cart.html" class="cart-btn">🛒 <span id="cart-count">0</span></a></div></header>
+<section class="page-hero"><p>SECURE CHECKOUT</p><h1>Complete Your Order</h1><span>Enter your delivery details below.</span></section>
+<section class="checkout-layout"><form class="form-card" onsubmit="placeOrder(event)"><h2>Customer Information</h2><input required type="text" placeholder="Full Name"><input required type="email" placeholder="Email Address"><input required type="text" placeholder="Phone Number"><input required type="text" placeholder="Delivery Address"><input required type="text" placeholder="City"><select required><option value="">Select Payment Method</option><option>Cash on Delivery</option><option>Card Payment</option></select><button class="primary-btn" type="submit">Place Order</button></form><div class="form-card"><h2>Order Total</h2><div class="summary-line"><span>Items</span><strong id="checkout-items">0</strong></div><div class="summary-line"><span>Total</span><strong id="checkout-total">$0.00</strong></div><p class="security-note">🔒 Your checkout information is handled through the application backend.</p></div></section>
+<footer class="footer"><div class="footer-brand"><h2>SYLORA</h2><p>Fashion that defines you.</p></div></footer><div class="copyright">© 2026 SYLORA. All Rights Reserved.</div>
+<script src="js/script.js"></script><script>loadCheckout();updateCartCount();</script>
+</body></html>

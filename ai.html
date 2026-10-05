@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>SYLORA | AI Shopping Assistant</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="logo">SYLORA</div>
+
+      <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="ai.html" class="active">AI Assistant</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="login.html" class="icon-btn">👤</a>
+
+        <a href="cart.html" class="cart-btn">
+          🛒 <span id="cart-count">0</span>
+        </a>
+      </div>
+    </header>
+
+    <section class="page-hero">
+      <p>SMART SHOPPING</p>
+
+      <h1>AI Shopping Assistant</h1>
+
+      <span>Tell SYLORA what you're looking for.</span>
+    </section>
+
+    <section class="ai-section">
+      <!-- CHAT -->
+      <div class="chat-card">
+        <div class="chat-header">
+          <strong>SYLORA AI</strong>
+          <span>● Online</span>
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+          <div class="message ai-message">
+            Hi! 👋 I'm the SYLORA Shopping Assistant. What are you looking for
+            today?
+          </div>
+        </div>
+
+        <!-- UPLOAD SECTION -->
+        <div class="file-upload-area">
+          <label for="fileInput"> 📎 Upload a document </label>
+
+          <input type="file" id="fileInput" accept=".pdf,.txt,.docx" />
+
+          <button type="button" onclick="uploadFile()">Upload File</button>
+
+          <p id="uploadMessage"></p>
+        </div>
+
+        <!-- CHAT INPUT -->
+        <div class="chat-input">
+          <input
+            id="chatInput"
+            type="text"
+            placeholder="Ask about products..."
+            onkeydown="if (event.key === 'Enter') sendMessage();"
+          />
+
+          <button onclick="sendMessage()">Send</button>
+        </div>
+      </div>
+
+      <!-- AI INFORMATION -->
+      <div class="ai-info">
+        <h2>How can I help?</h2>
+
+        <p>Try asking:</p>
+
+        <button onclick="quickAsk('I need a black hoodie under $40')">
+          Black hoodie under $40
+        </button>
+
+        <button onclick="quickAsk('Show me accessories')">
+          Show me accessories
+        </button>
+
+        <button onclick="quickAsk('I need a watch')">Recommend a watch</button>
+
+        <div class="security-note">
+          🔐 AI API integration will be connected through the Python backend so
+          secret API keys are not exposed in the browser.
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-brand">
+        <h2>SYLORA</h2>
+
+        <p>Fashion that defines you.</p>
+      </div>
+    </footer>
+
+    <div class="copyright">© 2026 SYLORA. All Rights Reserved.</div>
+
+    <script src="js/script.js"></script>
+
+    <script>
+      updateCartCount();
+
+      /* =========================================
+       FILE UPLOAD
+    ========================================= */
+
+      async function uploadFile() {
+        const fileInput = document.getElementById("fileInput");
+        const uploadMessage = document.getElementById("uploadMessage");
+
+        if (!fileInput.files.length) {
+          uploadMessage.textContent = "Please select a file first.";
+
+          return;
+        }
+
+        const file = fileInput.files[0];
+
+        const allowedTypes = [
+          "application/pdf",
+          "text/plain",
+          "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        ];
+
+        if (!allowedTypes.includes(file.type)) {
+          uploadMessage.textContent =
+            "Only PDF, TXT and DOCX files are allowed.";
+
+          return;
+        }
+
+        const formData = new FormData();
+
+        formData.append("file", file);
+
+        uploadMessage.textContent = "Uploading " + file.name + "...";
+
+        try {
+          const response = await fetch("http://127.0.0.1:5000/api/upload", {
+            method: "POST",
+            body: formData,
+          });
+
+          const data = await response.json();
+
+          if (response.ok) {
+            uploadMessage.textContent =
+              "✓ " + data.message + " — " + data.filename;
+
+            addChatMessage(
+              "📎 File uploaded: " + data.filename,
+              "user-message",
+            );
+
+            addChatMessage(
+              "I received your file. File analysis can be connected to the AI service next.",
+              "ai-message",
+            );
+          } else {
+            uploadMessage.textContent = "✕ " + data.message;
+          }
+        } catch (error) {
+          console.error(error);
+
+          uploadMessage.textContent = "Unable to connect to SYLORA server.";
+        }
+      }
+
+      /* =========================================
+       ADD MESSAGE TO CHAT
+    ========================================= */
+
+      function addChatMessage(text, className) {
+        const chatMessages = document.getElementById("chatMessages");
+
+        const message = document.createElement("div");
+
+        message.className = "message " + className;
+
+        message.textContent = text;
+
+        chatMessages.appendChild(message);
+
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+
+      /* =========================================
+       SIMPLE AI SHOPPING DEMO
+    ========================================= */
+
+      function sendMessage() {
+        const input = document.getElementById("chatInput");
+
+        const text = input.value.trim();
+
+        if (!text) {
+          return;
+        }
+
+        addChatMessage(text, "user-message");
+
+        input.value = "";
+
+        let response =
+          "I'd be happy to help you find something from SYLORA. Try asking about hoodies, accessories, watches, or other fashion products.";
+
+        const lowerText = text.toLowerCase();
+
+        if (lowerText.includes("hoodie")) {
+          response =
+            "We have stylish hoodie options at SYLORA. Tell me your preferred color and budget.";
+        } else if (lowerText.includes("watch")) {
+          response =
+            "SYLORA offers stylish watch options. Tell me your preferred style or budget.";
+        } else if (lowerText.includes("accessor")) {
+          response =
+            "You can explore our accessories collection including watches and fashion accessories.";
+        }
+
+        setTimeout(function () {
+          addChatMessage(response, "ai-message");
+        }, 500);
+      }
+
+      /* =========================================
+       QUICK QUESTIONS
+    ========================================= */
+
+      function quickAsk(text) {
+        document.getElementById("chatInput").value = text;
+
+        sendMessage();
+      }
+    </script>
+  </body>
+</html>
